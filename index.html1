@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PromptHatch - Choose Language</title>
+</head>
+<body>
+    <h1>🌍 Welcome to PromptHatch</h1>
+    <p>Please choose your language:</p>
+    <ul>
+        <li><a href="fa/index.html">🇮🇷 فارسی</a></li>
+        <li><a href="en/index.html">🇺🇸 English</a></li>
+    </ul>
+</body>
+</html>
