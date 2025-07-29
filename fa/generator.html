@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تولیدکننده هوشمند پرامپت</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      direction: rtl;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    label, input, select, button {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤖 تولیدکننده هوشمند پرامپت</h1>
+
+  <label for="topic">موضوع پرامپت:</label>
+  <input type="text" id="topic" placeholder="مثلاً بازاریابی شبکه‌های اجتماعی">
+
+  <label for="tone">سبک نوشتار:</label>
+  <select id="tone">
+    <option>رسمی</option>
+    <option>دوستانه</option>
+    <option>خلاقانه</option>
+  </select>
+
+  <label for="language">زبان:</label>
+  <select id="language">
+    <option>فارسی</option>
+    <option>انگلیسی</option>
+  </select>
+
+  <button onclick="generatePrompt()">✍️ تولید پرامپت</button>
+
+  <div id="output"></div>
+
+  <script>
+    function generatePrompt() {
+      const topic = document.getElementById("topic").value.trim();
+      const tone = document.getElementById("tone").value;
+      const language = document.getElementById("language").value;
+
+      if (!topic) {
+        alert("لطفاً موضوع پرامپت را وارد کنید.");
+        return;
+      }
+
+      let prompt = `لطفاً یک پرامپت با سبک ${tone} درباره "${topic}" به زبان ${language} تولید کن.`;
+
+      if (language === "English") {
+        prompt = `Please create a ${tone.toLowerCase()} prompt about "${topic}", in English.`;
+      }
+
+      document.getElementById("output").innerText = prompt;
+    }
+  </script>
+</body>
+</html>
