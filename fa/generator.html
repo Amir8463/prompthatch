@@ -3,74 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تولیدکننده هوشمند پرامپت</title>
+  <title>تولید پرامپت هوشمند</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: sans-serif;
-      background-color: #f4f4f4;
-      padding: 20px;
+      background-color: #f9f9f9;
+      padding: 16px;
+      margin: 0;
       direction: rtl;
     }
     h1 {
       text-align: center;
-      color: #222;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #333;
     }
-    label, input, select, button {
+    label {
+      margin-top: 12px;
       display: block;
+      font-size: 14px;
+      color: #444;
+    }
+    input, select, button {
       width: 100%;
       font-size: 16px;
-      margin-top: 15px;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0b5ed7;
     }
     #output {
       margin-top: 20px;
-      padding: 15px;
-      background: #fff;
-      border: 1px solid #ddd;
+      padding: 12px;
+      background-color: #fff;
+      border: 1px dashed #ccc;
+      border-radius: 6px;
       white-space: pre-wrap;
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
-  <h1>🤖 تولیدکننده هوشمند پرامپت</h1>
+  <h1>🤖 تولید پرامپت هوشمند</h1>
 
   <label for="topic">موضوع پرامپت:</label>
-  <input type="text" id="topic" placeholder="مثلاً بازاریابی شبکه‌های اجتماعی">
+  <input type="text" id="topic" placeholder="مثلاً: تولید محتوا برای اینستاگرام" />
 
-  <label for="tone">سبک نوشتار:</label>
+  <label for="tone">سبک نگارش:</label>
   <select id="tone">
-    <option>رسمی</option>
-    <option>دوستانه</option>
-    <option>خلاقانه</option>
+    <option value="رسمی">رسمی</option>
+    <option value="دوستانه">دوستانه</option>
+    <option value="طنزآلود">طنزآلود</option>
   </select>
 
-  <label for="language">زبان:</label>
-  <select id="language">
-    <option>فارسی</option>
-    <option>انگلیسی</option>
+  <label for="lang">زبان پرامپت:</label>
+  <select id="lang">
+    <option value="فارسی">فارسی</option>
+    <option value="انگلیسی">انگلیسی</option>
   </select>
 
-  <button onclick="generatePrompt()">✍️ تولید پرامپت</button>
+  <button onclick="generate()">تولید پرامپت</button>
 
   <div id="output"></div>
 
   <script>
-    function generatePrompt() {
-      const topic = document.getElementById("topic").value.trim();
-      const tone = document.getElementById("tone").value;
-      const language = document.getElementById("language").value;
+    function generate() {
+      const topic = document.getElementById('topic').value.trim();
+      const tone = document.getElementById('tone').value;
+      const lang = document.getElementById('lang').value;
+      const output = document.getElementById('output');
 
       if (!topic) {
-        alert("لطفاً موضوع پرامپت را وارد کنید.");
+        output.innerText = "لطفاً موضوع پرامپت را وارد کنید.";
         return;
       }
 
-      let prompt = `لطفاً یک پرامپت با سبک ${tone} درباره "${topic}" به زبان ${language} تولید کن.`;
-
-      if (language === "English") {
-        prompt = `Please create a ${tone.toLowerCase()} prompt about "${topic}", in English.`;
+      let prompt = '';
+      if (lang === 'فارسی') {
+        prompt = `لطفاً یک پرامپت ${tone} در مورد "${topic}" بنویس.`;
+      } else {
+        prompt = `Please write a ${tone.toLowerCase()} prompt about "${topic}".`;
       }
 
-      document.getElementById("output").innerText = prompt;
+      output.innerText = prompt;
     }
   </script>
 </body>
